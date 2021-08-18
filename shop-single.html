@@ -1,0 +1,96 @@
+{% extends 'plush_app/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description"
+    content="Plush fashion product shop items where you buy fashion materials and Bags, shoe at a Fastest delivery and shipping">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>
+    {% block title %}
+    {% if category %}{{ category.name }} {% else %} Products {% endif %}
+    {% endblock %}
+  </title>
+</head>
+{% block content %}
+<div class="container mt-1">
+  <!-- Product Page Section Beign -->
+  <section class="product-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-xs-4 col-4 col-sm-4 col-md-4">
+          <div class="product-slider owl-carousel">
+            <div class="product-img">
+              <figure>
+                <img
+                  src="{% if product.product_img1 %} {{ product.product_img1.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}"
+                  alt="{{ product.product_name1 }}">
+
+              </figure>
+            </div>
+            <div class="product-img">
+              <figure>
+                <img
+                  src="{% if product.product_img1 %} {{ product.product_img1.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}"
+                  alt="{{ product.product_name1 }}">
+              </figure>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-6 col-xs-6 col-6 col-sm-6 col-md-6">
+          <div class="product-content">
+            <h2>{{ product.product_name1 }}</h2>
+            <div class="p-status"><span class="text-info">Category:</span>{{ product.category }}</div>
+            <div class="pc-meta">
+              <h5>&#8358;{{product.product_price1|floatformat:0|intcomma}}</h5>
+              <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <p>{{ product.product_content|safe|linebreaksbr }}</p>
+            </div>
+
+            <div class="product-quantity">
+              <div class="">
+                <form action="{% url 'plush_app:cart_add' product.id %}" method="post">
+                  {% csrf_token %}
+                  {{ cart_product_form}}
+                  {% if request.user.is_authenticated %}
+                  <div class="col-sm-6">
+                    <input type="submit" value="add to cart" class="btn btn-dark text-light">
+                  </div>
+                  {% else %}
+                  <span><a href="{% url 'login' %}" class="btn btn-info">Sign In</a>
+                  </span>
+                  <span><a href="{% url 'register' %}" class="btn btn-info">
+                      Sign up! Click here
+                    </a>
+                  </span>
+                  {% endif %}
+                  <div class="col-sm-6 mt-1">
+                    <a href="{% url 'plush_app:shop' %}" class="btn btn-dark text-light">Continue
+                      Shopping</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Product Page Section End -->
+</div>
+{% endblock %}
+
+</html>

@@ -1,0 +1,53 @@
+{% extends 'plush_app/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+    {% block title %}
+    thank you
+    {% endblock %}
+  </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="keywords" content="product,shipping,delivery,item,standard,quality">
+  <meta name="author" content="plushfashionstore">
+  <meta name="description" content="thank you">
+
+</head>
+{% block content %}
+
+<body>
+
+  <div class="site-wrap">
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <span class="icon-check_circle display-3 text-success"></span>
+            <h2 class="display-3 text-black">Thank you!</h2>
+            <p class="lead mb-5">You order was successfuly completed.</p>
+            <p>Your order number is <strong>{{ order.id }}</strong>.</p>
+            <p><a href="{% url 'plush_app:shop' %}" class="btn btn-sm btn-primary">Back to shop</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="{% static 'plush_app/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'plush_app/js/jquery-ui.js' %}"></script>
+  <script src="{% static 'plush_app/js/popper.min.js' %}"></script>
+  <script src="{% static 'plush_app/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'plush_app/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'plush_app/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'plush_app/js/aos.js' %}"></script>
+
+  <script src="{% static 'plush_app/js/main.js' %}"></script>
+
+</body>
+
+</html>
+{% endblock %}

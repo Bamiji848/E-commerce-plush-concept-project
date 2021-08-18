@@ -1,0 +1,39 @@
+{% extends 'plush_app/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block title %}
+    Delivery details
+    {% endblock %}
+</head>
+{% block content %}
+
+<body>
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 offset-sm-3">
+                    <div class="col-sm-12 mb-5 mb-md-0"
+                        style="color: deeppink;font-weight: bolder;font-size: 14px;border: 2px solid powderblue;border-radius: 12px;padding: 20px;">
+                        <h2 class="h3 mb-3 text" style="color: deeppink;font-weight: bold;">Delivery Details</h2>
+                        <h6 class="h6 mb-3 text" style="color: gray;">Please fill valid details for your delivery...
+                        </h6>
+                        <form method="post" class="form">
+                            {{ form }}
+                            {% csrf_token %}
+                            <br>
+                            <button class="btn btn btn-sm py-3 btn-block"
+                                style="background-color: deeppink;color: white;font-weight: bold;">Finish</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
+{% endblock %}

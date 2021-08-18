@@ -1,0 +1,44 @@
+{% extends 'plush_app/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block title %}
+    Activation sent
+    {% endblock %}
+</head>
+{% block content %}
+
+<body>
+
+    <div class="site-wrap">
+        <div class="site-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <span class="icon-check_circle display-3 text-success"></span>
+                        <h6 class="display-6 text-black">Activation link sent!</h6>
+                        <p class="lead mb-5">Please check your mail for confirmation</p>
+                        <p><a href="{% url 'index' %}" class="btn btn-sm btn-primary">Home</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="{% static 'plush_app/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'plush_app/js/jquery-ui.js' %}"></script>
+    <script src="{% static 'plush_app/js/popper.min.js' %}"></script>
+    <script src="{% static 'plush_app/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'plush_app/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'plush_app/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'plush_app/js/aos.js' %}"></script>
+
+    <script src="{% static 'plush_app/js/main.js' %}"></script>
+
+</body>
+
+</html>
+{% endblock %}

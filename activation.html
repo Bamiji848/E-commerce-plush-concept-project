@@ -1,0 +1,44 @@
+{% extends 'plush_app/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block title %}
+    thank you
+    {% endblock %}
+</head>
+{% block content %}
+
+<body>
+
+    <div class="site-wrap">
+
+        <div class="site-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        Password: <input type="submit" name="password" value="password">
+                        Confirm Password: <input type="submit" name="password" value="password">
+                        <button type="submit">Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="{% static 'plush_app/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'plush_app/js/jquery-ui.js' %}"></script>
+    <script src="{% static 'plush_app/js/popper.min.js' %}"></script>
+    <script src="{% static 'plush_app/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'plush_app/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'plush_app/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'plush_app/js/aos.js' %}"></script>
+
+    <script src="{% static 'plush_app/js/main.js' %}"></script>
+
+</body>
+
+</html>
+{% endblock %}

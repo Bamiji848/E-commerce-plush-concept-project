@@ -1,0 +1,77 @@
+{% extends 'plush_app/base.html' %}
+{% load static %}
+{% load humanize %}
+
+<head>
+    <title>
+        {% block title %}
+        payzeetyuiolp
+        {% endblock %}
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="product,shipping,delivery,item,standard,quality">
+    <meta name="author" content="plushfashionstore">
+    <meta name="description" content="make payment,product,price,quantity">
+
+</head>
+{% block content %}
+<div class="border bg-light p-3 mb-2" style="border-radius: 15px;">
+    <div class="col-sm-12">
+        <ul class="list-group">
+            {% for item in cart %}
+            <li class="list-group-item" style="color: deeppink;font-weight: bold;">
+                <span class="text-danger" style="font-weight: bold;">
+                    {{ item.quantity }}</span>
+                {{ item.product.product_name1 }}
+                <span class="text-danger" style="font-weight: bold;">@</span>
+                <span style="color: black;font-weight: bold;">
+                    &#8358;{{ item.total_price|floatformat:2|intcomma }}</span>
+            </li>
+            {% endfor %}
+
+            <li class="list-group-item" style="color: black;font-weight: bold;">Total Cost:&#8358;
+                {{cart.get_total_price|floatformat:2|intcomma }}</li>
+        </ul>
+    </div>
+    <h5 class="h5 mb-0"><a class="d-block" style="font-weight: bold;color: deeppink;" data-toggle="collapse"
+            href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal"></a>
+    </h5>
+    <div>
+        <form class="pl-3">
+            <script src="https://js.paystack.co/v1/inline.js"></script>
+            <button type="button" onclick="payWithPaystack()" class="btn btn-sm py-3 text-light btn"
+                style="background-color: deeppink;">
+                Click to Pay
+            </button>
+        </form>
+
+        <script>
+            function payWithPaystack() {
+                var handler = PaystackPop.setup({
+                    key: 'pk_live_e5599a330c4202b7399b50f4504e912a2a650813',
+                    email: 'plushonlinefashionstore@gmail.com',
+                    amount: {{ cart.get_total_price }} * 100,
+                        currency: "NGN",
+                            // callback_url: '{% url 'thankyou' %}',
+                            ref: '' + Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+                                metadata: {
+                custom_fields: [
+                    {
+                        display_name: "Mobile Number",
+                        variable_name: "mobile_number",
+                        value: "+2348012345678"
+                    }
+                ]
+            },
+            callback: function (response) {
+                window.location.replace("https://plushfashionstore.com/plush_apporder_create/") + response.reference;
+                // alert('success. transaction ref is ' + response.reference);
+            }
+                  });
+            handler.openIframe();
+                                                    }
+        </script><br>
+    </div>
+</div>
+{% endblock %}

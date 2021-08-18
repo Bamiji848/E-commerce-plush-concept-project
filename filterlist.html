@@ -1,0 +1,90 @@
+{% extends 'plush_app/base.html' %}
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        {% block title %}
+        Search
+        {% endblock %}
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="click,buy,image,avogan">
+    <meta name="author" content="plushfashionstore">
+    <meta name="description" content="search product content and price click image to buy search result">
+</head>
+{% block content %}
+
+<body>
+
+
+
+
+    <section class="">
+        <div class="container">
+
+            <div class="row mb-5">
+                <div class="col-md-9 col-sm-12 order-2">
+                    <a class="text-capitalize" style="color:navy;" href="{% url 'index' %}">Continue Shopping</a>
+
+                    <h6 style="color: deeppink;">Search Page</h6>
+
+                    {% if submitbutton == 'Search' and request.GET.q != '' %}
+                    {% if results %}
+                    <h6 style="color: deeppink;">Results for <b style="color: gray;">#{{ request.GET.q }}</b></h6>
+                    <div class="row">
+                        {% for r in results %}
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-6">
+                            <div class="single-product-item card">
+                                <div class="card-header bg-secondary text-light">{{ r.category }}</div>
+                                <figure>
+                                    <img src="{{r.product_img1.url}}" alt="" style="height: 220px;width:100%;">
+                                </figure>
+                                <div class="product-text card-body">
+                                    <p>
+                                        <a href="{{ r.get_absolute_url }}" class="text-secondary">
+                                            <span class="text-center" style="font-size:12px;">
+                                                {{r.product_name1}}</span>
+                                        </a>
+                                    </p>
+                                    <p class="text-center card-footer">
+                                        &#8358;{{r.product_price1|floatformat:0|intcomma}}</p>
+                                    <p><a href="{{ r.get_absolute_url }}"
+                                            class="btn btn-dark text-uppercase text-bold">Buy</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+
+                        <div style="color:navy;">
+                            This item is not available at the moment.kindly check later. We appreciate your patronage
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <script src="{% static 'plush_app/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'plush_app/js/jquery-ui.js' %}"></script>
+    <script src="{% static 'plush_app/js/popper.min.js' %}"></script>
+    <script src="{% static 'plush_app/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'plush_app/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'plush_app/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'plush_app/js/aos.js' %}"></script>
+
+    <script src="{% static 'plush_app/js/main.js' %}"></script>
+
+</body>
+
+</html>
+{% endblock %}

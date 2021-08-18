@@ -1,0 +1,53 @@
+{% extends 'plush_app/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        {% block title %}
+        Logout
+        {% endblock %}
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="confirm,logout">
+    <meta name="author" content="plushfashionstore">
+    <meta name="description" content="Confirm logout">
+
+</head>
+
+{% block content %}
+
+<body>
+
+    <div class="container pt-5 pb-5">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="login-form">
+                    <div class="page-title text-center">
+
+                        <a href="{% url 'index' %}">
+                            <h3 style="color: orangered;">Confirm logout?</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
+{% endblock %}

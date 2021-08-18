@@ -1,0 +1,129 @@
+{% extends 'plush_app/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% block title %}
+  About
+  {% endblock %}
+</head>
+
+{% block content %}
+
+<body>
+
+  <div class="site-wrap">
+
+
+    {% for m in meet %}
+    {% if meet %}
+    <div class="site-section border-bottom" data-aos="fade">
+      <div class="container">
+        <div class="row">
+          <div class=""></div>
+          <div class="">
+
+
+            <div class="site-section-heading pt-3 mb-1">
+              <h2 class="text" style="font-weight: bold;color: deeppink;">Meet Us</h2>
+            </div>
+            <p class="text" style="font-size: 14px;">{{m.meet_details}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <!-- Features Section Begin -->
+    <section class="features-section spad">
+      <div class="features-ads">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-xs-4 col-4 col-sm-4 col-md-4">
+              <div class="single-features-ads first">
+                {% for f in fornt %}
+                {% if fornt %}
+                <img src="{% static 'plush_app/img/icons/f-delivery.png' %}" alt="{{f.fd_title}}">
+                <h4>{{f.fd_title}}</h4>
+                <p>{{f.fd_description}}</p>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            <div class="col-lg-4 col-xs-4 col-4 col-sm-4 col-md-4">
+              <div class="single-features-ads second">
+                {% for g in fornt2 %}
+                {% if fornt2 %}
+                <img src="{% static 'plush_app/img/icons/coin.png' %}" alt="{{g.fd_title2}}">
+                <h4>{{g.fd_title2}}</h4>
+                <p>{{g.fd_description2}}</p>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            <div class="col-lg-4 col-xs-4 col-4 col-sm-4 col-md-4">
+              <div class="single-features-ads">
+                {% for h in fornt3 %}
+                {% if fornt3 %}
+                <img src="{% static 'plush_app/img/icons/chat.png' %}" alt="{{h.fd_title3}}">
+                <h4>{{h.fd_title3}}</h4>
+                <p>{{h.fd_description3}}</p>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Features Box -->
+      <div class="features-box">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="row">
+                <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 col-12">
+                  <div class="single-box-item first-box">
+                    <img src="{% static 'plush_app/img/f-box-1.jpg' %}" alt="jewery">
+                    <div class="box-text">
+                      <span class="trend-year">Fascinating</span>
+                      <h2>Gown</h2>
+                      <span class="trend-alert">Trend Allert</span>
+                      <a href="#" class="primary-btn">See More</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 col-12">
+                  <div class="single-box-item second-box">
+                    <img src="{% static 'plush_app/img/f-box-2.jpg' %}" alt="Footwear">
+                    <div class="box-text">
+                      <span class="trend-year">Beffitting Footwear</span>
+                      <h2>Footwear</h2>
+                      <span class="trend-alert">Bold & Black</span>
+                      <a href="{% url 'plush_app:shop' %}" class="primary-btn">See More</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 ">
+              <div class="single-box-item large-box">
+                <img src="{% static 'plush_app/img/f-box-3.jpg' %}" alt="Collection">
+                <div class="box-text">
+                  <span class="trend-year">Cute Clothings</span>
+                  <h2>Collection</h2>
+                  <div class="trend-alert">Trend Allert</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Features Section End -->
+
+  </div>
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'plush_app/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+<head>
+  <title>
+    {% block title %}
+    Checkout
+    {% endblock %}
+  </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="keywords" content="product,click,pay">
+  <meta name="author" content="plushfashionstore">
+  <meta name="description"
+    content="place order,address,phone number,alternative phone number,product name,product price">
+
+</head>
+{% block content %}
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-2">
+      <h6 style="color: deeppink;font-weight: bold;">Your Order</h6>
+    </div>
+
+    <div class="col-sm-8">
+      <form action="" method="post" style="color: deeppink;font-weight: bold;">
+        {% csrf_token %}
+        {{ form | crispy }}<br>
+        <div class="col-sm-2">
+          <ul class="list-group">
+            {% for item in cart %}
+            <li class="list-group-item" style="color: navy;">
+              <span class="text-success" style="font-weight: bold;">{{ item.quantity }}</span> {{
+              item.product.product_name1 }}
+              <span class="text-success" style="font-weight: bold;">@</span>
+              <span style="color: navy;">
+                &#8358;{{ item.total_price|floatformat:2|intcomma }}</span>
+            </li>
+            {% endfor %}
+
+            <li class="" style="color: navy;">
+              Total Cost:&#8358;{{ cart.get_total_price|floatformat:2|intcomma }}</li>
+          </ul>
+        </div>
+        <input type="submit" class="btn btn-sm py-3 btn-block text-light" value="Place Order"
+          style="background-color: deeppink;">
+
+      </form>
+    </div>
+    <!-- <h4 class="page-header">Checkout</h4> -->
+
+
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'plush_app/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        {% block title %}
+        Our Exciting Sewing & Stuffs
+        {% endblock %}
+    </title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="Plush fashion store gallery">
+    <meta name="description" content="plush fashion store">
+    <meta name="author" content="plush fashion store">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+{% block content %}
+
+<body>
+
+
+
+
+
+    <section class="bg-light">
+        <h6 style="text-align: center;color: deeppink;" class="mt-1 mb-5">We always make beautiful outfits, Design of
+            your specs?Chat with us <a
+                href="https://wa.me/2348097412162?text=I'm%20interested%20in%20buying%20from%20plushfashiononline%20store">here</a>
+            to order for one now <span>or call <a href="tel://+2348163785666"
+                    class="text-info">+2348163785666</a></span></h6>
+        <div class="container">
+            <div class="row">
+                {% if media %}
+                {% for m in media %}
+                <div class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 ftco-animate">
+                    <div class="blog-entry mb-5">
+
+                        <img src="{{ m.media.url }}" style="width: 100%;" alt="gallery images" data-aos="zoom-in"
+                            data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-out">
+                        <h6 style="color: indianred;"></h6>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+</body>
+
+</html>
+{% endblock %}

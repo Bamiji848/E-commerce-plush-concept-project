@@ -1,0 +1,25 @@
+{% extends 'plush_app/base.html' %}
+{% load static %}
+{% block title %}
+{{ user.first_name }} | {{ user.last_name }}
+{% endblock %}
+
+{% block content %}
+<div class="col-sm-9" id="admin-main-content">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="post-content">
+
+                <h3>My Profile</h3>
+                <p><strong>Username</strong>: {{ user.username }}</p>
+                <p><strong>Firstname</strong>: {{ user.first_name }}</p>
+                <p><strong>Lastname</strong>: {{ user.last_name }}</p>
+                <p><strong>Email</strong>: {{ user.email }}</p>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
